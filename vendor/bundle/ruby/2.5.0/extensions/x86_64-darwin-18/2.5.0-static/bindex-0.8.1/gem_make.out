@@ -1,0 +1,15 @@
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/kajitaniryuunosuke/.rbenv/versions/2.5.5/bin/ruby -r ./siteconf20200217-2847-12ag1g6.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20200217-2847-15ue4h8/skiptrace/internal

@@ -1,0 +1,15 @@
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.5/ext/bootsnap
+/Users/kajitaniryuunosuke/.rbenv/versions/2.5.5/bin/ruby -r ./siteconf20200217-2847-z1zwjq.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20200217-2847-1po1c1z/bootsnap

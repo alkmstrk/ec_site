@@ -1,0 +1,19 @@
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+/Users/kajitaniryuunosuke/.rbenv/versions/2.5.5/bin/ruby -r ./siteconf20200217-2847-jjbayd.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/kajitaniryuunosuke/Desktop/naga_cake/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 byebug.bundle ./.gem.20200217-2847-s9ar99/byebug
