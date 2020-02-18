@@ -1,51 +1,46 @@
 Rails.application.routes.draw do
   devise_for :admins
   devise_for :end_users
+
+  get '/' => 'public/items#top'
+  get '/end_users/my_page' => 'public/end_users#show'
+  get '/end_users/edit' => 'public/end_users#edit'
+  patch '/end_users/' => 'public/end_users#update'
+  # 退会確認画面
+  get '/end_users/unsubscribe' => 'public/end_users#unsubscribe'
+  # 退会処理/論理削除
+  patch '/end_users/is_deleted' => 'public/end_users#is_deleted'
+
   namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
+    root 'top#top'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :end_users, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
   end
-  namespace :admin do
-    get 'end_users/index'
-    get 'end_users/show'
-    get 'end_users/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'top/top'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'end_users/show'
-    get 'end_users/edit'
-    get 'end_users/unsucribe'
-  end
-  namespace :public do
-    get 'items/top'
-    get 'items/index'
-    get 'items/show'
+
+
+  scope module: :public do
+    # 商品
+    resources :items, only: [:index, :show]
+    # カート内商品
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete :clear # 一括削除
+      end
+    end
+    # 購入履歴
+    resources :orders, only: [:new, :index, :show, :create] do
+      collection do
+        get :confirm #購入情報確認画面
+        get :complete #購入完了画面
+      end
+    end
+    # 配送先
+    resources :addresses, only: [:index, :edit, :update, :create, :destroy]
+
+    resources :purchases_histories, only: [:index, :show, :new, :create, :destroy]
+    resources :contacts, only: [:new, :create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
