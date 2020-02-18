@@ -9,6 +9,62 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header class = "navbar navbar-default" style="background-color:black;">
+      <div class = "container">
+        <nav class = "nav navbar-nav navbar-left" >
+          <%= link_to public_items_index_path do %>
+            <span class="mu-reco">
+              mu-reco
+            </span>
+          <% end %>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right" >
+            <% if end_user_signed_in? %>
+             <li>
+                <%= link_to '商品一覧', public_items_index_path %>
+              </li>
+              <li>
+                <%= link_to 'マイページ', public_end_users_show_path(current_end_user) %>
+              </li>
+              <li>
+                <%= link_to 'カゴ', public_cart_items_index_path %>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li>
+                <%= link_to '新規追加', admin_items_new_path %>
+              </li>
+              <li>
+                <%= link_to '商品一覧', admin_items_index_path %>
+              </li>
+              <li>
+                <%= link_to 'ユーザー情報', admin_end_users_index %>
+              </li>
+              <li>
+                <%= link_to '注文情報', admin_orders_index_path %>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to '商品一覧', public_items_index_path %>
+              </li>
+              <li>
+                <%= link_to '会員登録', new_end_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'ログイン', new_end_user_session_path %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
   <body>
     <%= yield %>
   </body>
