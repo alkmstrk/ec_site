@@ -2,11 +2,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resourse)
-    if resourse == EndUser
-      public_end_users_show(resourse)
-    else
-      admin_items_index_path
+    case resource
+    when EndUser
+      end_users_my_page_path
+    when Admin
+      admin_items_path
     end
+  end
+
+  def after_sign_out_path_for(resourse)
+    root_path
   end
 
   protected

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :end_users
 
-  get '/' => 'public/items#top'
+  get '/' => 'public/items#top', as: :root
   get '/end_users/my_page' => 'public/end_users#show'
   get '/end_users/edit' => 'public/end_users#edit'
   patch '/end_users/' => 'public/end_users#update'
