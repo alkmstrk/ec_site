@@ -1,2 +1,41 @@
-<h1>Public::EndUsers#edit</h1>
-<p>Find me in app/views/public/end_users/edit.html.erb</p>
+
+<h4>登録情報編集</h4>
+<%= link_to "退会する", end_users_unsucribe_path, data: {confirm: '退会しますか?'} %>
+
+<%= form_with model: current_end_user, url: end_user_path do |f| %>
+
+  <table border="1">
+    <tbody>
+      <tr>
+        <th>氏名</th>
+        <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th>カナ</th>
+        <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= f.text_field :post_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= f.text_field :address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= f.text_field :telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit "編集内容を保存する" %>
+
+<% end %>

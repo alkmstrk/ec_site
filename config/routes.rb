@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   get '/' => 'public/items#top', as: :root
   get '/end_users/my_page' => 'public/end_users#show'
-  get '/end_users/edit' => 'public/end_users#edit'
-  patch '/end_users/' => 'public/end_users#update'
+  get '/end_user/edit' => 'public/end_users#edit'
+  patch '/end_user/' => 'public/end_users#update'
   # 退会確認画面
-  get '/end_users/unsubscribe' => 'public/end_users#unsubscribe'
+  get '/end_users/unsucribe' => 'public/end_users#unsucribe'
   # 退会処理/論理削除
   patch '/end_users/is_deleted' => 'public/end_users#is_deleted'
 

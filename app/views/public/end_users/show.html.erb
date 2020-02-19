@@ -1,2 +1,43 @@
-<h1>Public::EndUsers#show</h1>
-<p>Find me in app/views/public/end_users/show.html.erb</p>
+
+
+<h4>マイページ</h4>
+<h4>登録情報</h4>
+<%= link_to "編集する", end_user_edit_path %>
+<%= link_to "パスワードを変更する", edit_end_user_registration_path %>
+<table border="1">
+  <tbody>
+    <tr>
+      <th>氏名</th>
+      <td><%= current_end_user.last_name %> <%= current_end_user.first_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= current_end_user.last_name_kana %> <%= current_end_user.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= current_end_user.last_name_kana %><%= current_end_user.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= current_end_user.post_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= current_end_user.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= current_end_user.telephone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= current_end_user.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>配送先</h4>
+<%= link_to "一覧を見る",addresses_path %>
+<h4>注文履歴</h4>
+<%= link_to "一覧を見る", orders_path %>
