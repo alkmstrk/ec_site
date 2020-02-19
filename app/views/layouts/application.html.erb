@@ -48,6 +48,9 @@
                 <%= link_to '注文情報', admin_orders_path %>
               </li>
               <li>
+                <%= link_to 'ジャンル管理', admin_genres_path %>
+              </li>
+              <li>
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
               </li>
             <% else %>
