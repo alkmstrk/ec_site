@@ -31,6 +31,9 @@
               <li>
                 <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
               </li>
+              <li>
+                <%= current_end_user.last_name %> <%= current_end_user.first_name %>様
+              </li>
             <% elsif admin_signed_in? %>
               <li>
                 <%= link_to '新規追加', new_admin_item_path %>

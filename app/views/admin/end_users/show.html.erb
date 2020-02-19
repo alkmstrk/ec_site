@@ -1,2 +1,41 @@
-<h1>Admin::EndUsers#show</h1>
-<p>Find me in app/views/admin/end_users/show.html.erb</p>
+<h4>会員詳細画面</h4>
+
+<table border="1">
+  <tbody>
+    <tr>
+      <th>顧客ID</th>
+      <td><%= @user.id %> <%= @user.is_deleted %></td>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <td><%= @user.last_name %> <%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= @user.last_name_kana %> <%= @user.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @user.post_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @user.telephone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "編集する", edit_admin_end_user_path(@user) %>
+<%= link_to "注文履歴一覧を見る", admin_orders_path %>
