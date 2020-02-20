@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # 退会処理/論理削除
   patch '/end_users/is_deleted' => 'public/end_users#is_deleted'
 
+  get '/items/genre/:id' => 'public/items#genre_index', as: :items_genre
   namespace :admin do
     root 'top#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

@@ -7,6 +7,11 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
   end
 
+  def genre_index
+    @genre = Genre.find(params[:id])
+    @genres = Genre.all
+  end
+
   def show
   end
 end
