@@ -1,5 +1,5 @@
 class Public::EndUsersController < ApplicationController
-  
+
   def update
     if current_end_user.update(end_user_params)
       redirect_to end_users_my_page_path
