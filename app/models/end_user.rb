@@ -6,7 +6,7 @@ class EndUser < ApplicationRecord
 
   # 退会済みのユーザーがログインできないようにする
   def active_for_authentication?
-    super && !self.is_deleted
+    super && self.is_deleted == "有効"
   end
 
   devise :database_authenticatable, :registerable,
