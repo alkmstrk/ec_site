@@ -1,2 +1,18 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div>
+  <h5>ジャンル検索<h5>
+  <% @genres.each do |genre| %>
+    <%= link_to genre.title, items_genre_path(genre)  %>
+  <% end %>
+</div>
+
+
+ <%= attachment_image_tag @item, :image, :fill, 1200, 1200, format: 'jpeg', size:'200x200', style: "border-radius: 2px;"%>
+ <%= @item.name %><br>
+ <%= @item.introduction %><br>
+ ￥<%= @item.price %>(税抜)
+
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+  <%= f.number_field :amount, min: 1, max: 10, :value => 1 %> 個
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.submit "カートに追加" %>
+<% end %>
