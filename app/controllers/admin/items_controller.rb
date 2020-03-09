@@ -1,6 +1,12 @@
 class Admin::ItemsController < ApplicationController
+  
   def index
-    @items = Item.all
+    if (params[:search]) != nil && (params[:search]) != ""
+      @items, @word = Item.search(params[:search]), (params[:search]) + "の検索結果"
+    else
+      @items, @word = Item.all, "全ての商品"
+    end
+    @genres = Genre.all
   end
 
   def new

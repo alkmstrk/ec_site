@@ -1,2 +1,50 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>注文詳細画面</h1>
+
+<h3>購入者</h3>
+<%= @order.end_user.first_name %><%= @order.end_user.last_name %>
+<h3>配送先</h3>
+<%= @order.post_code %>  <%= @order.address %>  <%= @order.name %>
+<h3>支払方法</h3>
+<%= @order.payment_method %>
+<h3>注文ステータス</h3>
+    <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
+        <%= f.select :order_status, Order.order_statuses.keys %>
+        <%= f.submit "更新" %>
+    <% end %>
+
+<table>
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @order.order_details.each do |order_detail| %>
+            <tr>
+                <td><%= order_detail.item.name %></td>
+                <td><%= order_detail.item.price * @tax %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= order_detail.item.price * order_detail.amount * @tax %></td>
+                <td>
+                    <%= form_with model: order_detail, url:  detail_update_admin_orders_path, method: :patch do |f| %>
+                        <%= f.select :making_status, OrderDetail.making_statuses.keys %> 
+                        <%# # <%= f.select :making_status, ["着手不可", "制作待ち", "製作中", "制作完了"] %> 
+                        <%= f.submit "更新" %>
+                        <%= hidden_field_tag :order_detail_id, order_detail.id %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<h6>商品合計</h6>
+<%= @order.total_payment - @shipping_cost %>
+<h6>送料</h6>
+<%= @shipping_cost %>
+<h6>請求金額合計</h6>
+<%= @order.total_payment %>

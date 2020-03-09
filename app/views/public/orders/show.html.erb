@@ -1,2 +1,66 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+<h3>注文情報</h3>
+<table>
+    <tr>
+        <th>注文日</th>
+        <th><%= @order.created_at.year %>/<%= @order.created_at.month %>/<%= @order.created_at.day %></th>
+    </tr>
+    <tr>
+        <th>配送先</th>
+        <th>
+            <%= @order.post_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+        </th>
+    </tr>
+    <tr>
+        <th>支払方法</th>
+        <th><%= @order.payment_method %></th>
+    </tr>
+    <tr>
+        <th>ステータス</th>
+        <th><%= @order.order_status %></th>
+    </tr>
+</table>
+
+
+<h3>請求情報</h3>
+<table>
+    <tr>
+        <th>商品合計</th>
+        <th><%= @order.total_payment - @order.shipping_cost %></th>
+    </tr>
+    <tr>
+        <th>配送料</th>
+        <th><%= @order.shipping_cost %></th>
+    </tr>
+    <tr>
+        <th>ご請求額</th>
+        <th><%= @order.total_payment %></th>
+    </tr>
+</table>
+
+
+<h3>注文内容</h3>
+<table>
+    <thead>
+        <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+
+    <% @order.order_details.each do |o_d| %>
+        <tbody>
+            <tr>
+                <td><%= o_d.item.name %></td>
+                <td><%= (o_d.item.price * @tax).ceil %></td>
+                <td><%= o_d.amount %></td>
+                <td><%= (o_d.item.price * @tax * o_d.amount).ceil %></td>
+            </tr>
+        </tbody>
+    <% end %>
+</table>

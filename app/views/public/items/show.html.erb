@@ -1,8 +1,10 @@
 <div>
   <h5>ジャンル検索<h5>
-  <% @genres.each do |genre| %>
-    <%= link_to genre.title, items_genre_path(genre)  %>
-  <% end %>
+  <ul>
+    <% @genres.each do |genre| %>
+      <li><%= link_to genre.title, items_path(genre_id: genre.id)  %></li>
+    <% end %>
+  </ul>
 </div>
 
 
