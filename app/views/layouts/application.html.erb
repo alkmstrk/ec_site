@@ -9,58 +9,63 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header class = "navbar navbar-default" style="background-color:black;">
-      <div class = "container">
-        <nav class = "nav navbar-nav navbar-left" >
-          <span class="mu-reco">
-            nagano_cake
+  <header>
+      <div class = "container clearfix">
+          <span class="logo">
+            <%= link_to "naga_cake", items_path %>
           </span>
-        </nav>
+          <div class="search">
+            <%= form_tag items_path, method: :get do %>
+              <%# <%= select_tag 'option', options_for_select([['Book','1'],['User','2']]) %> 
+              <%= text_field_tag :search, params[:search], class: "search-form" %>
+              <%= button_tag "", :title => nil, class: "search-btn fas fa-search" %>
+            <% end %>
+          </div>
         <nav>
-          <ul class="nav navbar-nav navbar-right" >
+          <ul class="nav" >
             <% if end_user_signed_in? %>
-             <li>
-                <%= link_to '商品一覧', items_path %>
+              <li class="nav-list">
+                <%= link_to 'お菓子一覧', items_path %>
               </li>
-              <li>
+              <li class="nav-list">
                 <%= link_to 'マイページ', end_users_my_page_path %>
               </li>
-              <li>
-                <%= link_to 'カゴ', cart_items_path %>
+              <li class="nav-list">
+                <%= link_to '買い物かご', cart_items_path %>
               </li>
-              <li>
+              <li class="nav-list last-list">
                 <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
               </li>
-              <li>
-                <%= current_end_user.last_name %> <%= current_end_user.first_name %>様
+              <li class="nav-list user">
+                <%= current_end_user.last_name %>様
               </li>
             <% elsif admin_signed_in? %>
-              <li>
+              <li class="nav-list">
                 <%= link_to '新規追加', new_admin_item_path %>
               </li>
-              <li>
+              <li class="nav-list">
                 <%= link_to '商品一覧', admin_items_path %>
               </li>
-              <li>
-                <%= link_to 'ユーザー情報', admin_end_users_path %>
+              <li class="nav-list">
+                <%= link_to 'ユーザー', admin_end_users_path %>
               </li>
-              <li>
+              <li class="nav-list">
                 <%= link_to '注文情報', admin_orders_path %>
               </li>
-              <li>
-                <%= link_to 'ジャンル管理', admin_genres_path %>
+              <li class="nav-list">
+                <%= link_to 'ジャンル', admin_genres_path %>
               </li>
-              <li>
+              <li class="nav-list last-list">
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
               </li>
             <% else %>
-              <li>
-                <%= link_to '商品一覧', items_path %>
+              <li class="nav-list">
+                <%= link_to 'お菓子一覧', items_path %>
               </li>
-              <li>
-                <%= link_to '会員登録', new_end_user_registration_path %>
+              <li class="nav-list">
+                <%= link_to '初めての方', new_end_user_registration_path %>
               </li>
-              <li>
+              <li class="nav-list last-list"> 
                 <%= link_to 'ログイン', new_end_user_session_path %>
               </li>
             <% end %>

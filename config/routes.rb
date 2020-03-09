@@ -11,19 +11,23 @@ Rails.application.routes.draw do
   # 退会処理/論理削除
   patch '/end_users/is_deleted' => 'public/end_users#is_deleted'
 
-  get '/items/genre/:id' => 'public/items#genre_index', as: :items_genre
   namespace :admin do
     root 'top#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :end_users, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:index, :show, :update] do
+      collection do
+        patch :detail_update
+      end
+    end
   end
 
 
   scope module: :public do
     # 商品
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+    end
     # カート内商品
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
@@ -33,7 +37,7 @@ Rails.application.routes.draw do
     # 購入履歴
     resources :orders, only: [:new, :index, :show, :create] do
       collection do
-        get :confirm #購入情報確認画面
+        post :confirm #購入情報確認画面
         get :complete #購入完了画面
       end
     end

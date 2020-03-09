@@ -5,4 +5,8 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   attachment :image
+
+  def self.search(search)
+		self.where(['name LIKE ?', "%#{search}%"])
+	end
 end

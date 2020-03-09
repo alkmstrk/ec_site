@@ -1,14 +1,15 @@
 class Public::ItemsController < ApplicationController
-  def top
-  end
 
+  #indexだけでジャンル検索のワード検索の結果を表示できるようにした
   def index
-    @items = Item.all
-    @genres = Genre.all
-  end
-
-  def genre_index
-    @genre = Genre.find(params[:id])
+    if (params[:search]) != nil && (params[:search]) != ""
+      @items, @word = Item.search(params[:search]), (params[:search]) + "の検索結果"
+    elsif (params[:genre_id]) != nil
+      genre = Genre.find(params[:genre_id])
+      @items, @word = genre.items, genre.title
+    else
+      @items, @word = Item.all, "全ての商品"
+    end
     @genres = Genre.all
   end
 

@@ -6,10 +6,12 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
-    if @cart_item.save
+    if current_end_user.cart_items.where(item_id: @cart_item.item_id).exists?
+      redirect_to cart_items_path, notice: 'すでに追加しています'
+    elsif @cart_item.save
       redirect_to items_path
     else
-      render 'public/items/show'
+      rredirect_to items_path, notice: '追加に失敗しました'
     end
   end
 

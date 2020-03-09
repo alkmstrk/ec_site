@@ -1,2 +1,31 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<h1>注文履歴一覧</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @orders.each do |order| %>
+            <tr>
+                <th><%= order.created_at.year %>/<%= order.created_at.month %>/<%= order.created_at.day %></th>
+                <th><%= order.address %></th>
+                <th>
+                    <% order.order_details.each do |o_d| %>
+                    <%= o_d.item.name %><br>
+                    <% end %>
+                </th>
+                <th><%= order.total_payment %></th>
+                <th><%= order.order_status %></th>
+                <th><%= link_to "表示する", order_path(order.id) %></th>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

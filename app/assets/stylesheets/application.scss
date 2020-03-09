@@ -13,5 +13,109 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";     
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+body {
+  width: 100%;
+}
+
+header {
+  height: 35px;
+  background-color: rgb(233, 160, 92);
+  width: 100%;
+}
+
+.logo {
+  font-size: 11px;
+  line-height: 35px;
+  float: left;
+  color: #FAFAFA;
+  padding-left: 2%;
+}
+.logo a{
+  color: #FAFAFA;
+}
+
+.nav {
+  float: right;
+}
+
+.nav-list {
+  font-size: 8px;
+  list-style: none;
+  float: left;
+  line-height: 35px;
+  color: #FAFAFA;
+  margin: 0 1px;
+}
+
+.user {
+  line-height: 12px;
+  margin: 0 7px;
+}
+.nav-list a {
+  color: #FAFAFA;
+  padding: 8px 5px;
+  border: solid rgb(219, 195, 195);
+  border-width: 0 0 0 0.1px;
+}
+
+.last-list a {
+  border-width: 0 0.1px 0 0.1px;
+}
+
+.search {
+  line-height: 35px;
+  float: left;
+  margin-left: 20px;
+}
+.search-form {
+  border: none;
+  width: 150px;
+  border-radius: 3px;
+  // フォームの青い枠を消す
+  outline: 0;
+  box-shadow: none;
+}
+
+.search-btn {
+  border: none;
+  color: white;
+  font-size: 10px;
+  border-radius: 3px;
+  width: 17px;
+  background-color: rgb(233, 160, 92);
+  outline: 0;
+  box-shadow: none;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 追加 */
+}
+
+.flex div {
+  margin: 15px;
+}
