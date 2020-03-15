@@ -52,7 +52,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', 
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -73,7 +73,9 @@ gem 'devise'
 gem "bootstrap-sass"
 gem 'jquery-rails'
 
-gem "refile"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'pry-byebug'
+
+gem 'font-awesome-sass', '~> 5.4.1'
