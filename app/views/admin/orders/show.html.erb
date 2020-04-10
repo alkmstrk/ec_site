@@ -27,9 +27,9 @@
         <% @order.order_details.each do |order_detail| %>
             <tr>
                 <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.item.price * @tax %></td>
+                <td><%= (order_detail.item.price * @tax).ceil %></td>
                 <td><%= order_detail.amount %></td>
-                <td><%= order_detail.item.price * order_detail.amount * @tax %></td>
+                <td><%= (order_detail.item.price * order_detail.amount * @tax).ceil %></td>
                 <td>
                     <%= form_with model: order_detail, url:  detail_update_admin_orders_path, method: :patch do |f| %>
                         <%= f.select :making_status, OrderDetail.making_statuses.keys %> 

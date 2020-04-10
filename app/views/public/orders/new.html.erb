@@ -21,7 +21,7 @@
   
   <div>
     <%= f.radio_button :select_address, "2" %>登録済み住所から選択<br>
-    <%= f.collection_select :address2, Address.all, :id, :p_c_a_n, :prompt => "配送先を選択してください" %><br>
+    <%= f.collection_select :address_id, current_end_user.addresses, :id, :total_addresses, :prompt => "配送先を選択してください" %><br>
     <br>
   </div>
   <div><br>

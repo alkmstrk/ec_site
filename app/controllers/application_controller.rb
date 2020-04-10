@@ -28,4 +28,16 @@ class ApplicationController < ActionController::Base
     @shipping_cost = 800
   end
 
+  def set_genre_all
+    @genres = Genre.all
+  end
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end

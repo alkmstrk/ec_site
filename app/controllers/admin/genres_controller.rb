@@ -1,6 +1,7 @@
 class Admin::GenresController < ApplicationController
+  before_action :set_genre_all, only: [:index, :create]
+
   def index
-    @genres = Genre.all
     @genre = Genre.new
   end
 
@@ -9,7 +10,6 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to admin_genres_path
     else
-      @genres = Genre.all
       render :index
     end
   end

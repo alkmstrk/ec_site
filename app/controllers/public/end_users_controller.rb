@@ -8,9 +8,6 @@ class Public::EndUsersController < ApplicationController
     end
   end
 
-  def unsucribe
-  end
-
   def is_deleted
     current_end_user.update(is_deleted: true)
     reset_session
