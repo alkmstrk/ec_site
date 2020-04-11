@@ -10,7 +10,7 @@ class EndUser < ApplicationRecord
 		self.where("(last_name LIKE ? ) OR (first_name LIKE ?) OR (first_name_kana LIKE ?) OR (first_name_kana LIKE ?)", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end
   
-  # orders_controllersのconfirmで仕様
+  # public/orders#confirmで使用
   def user_infos
     [self.post_code, self.address, self.first_name + self.last_name]
   end

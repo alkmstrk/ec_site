@@ -1,8 +1,8 @@
 class Public::AddressesController < ApplicationController
   before_action :set_address, only:[:edit, :update, :destroy]
+
   def index
     @address = Address.new
-    @addresses = current_end_user.addresses
   end
 
   def create
@@ -29,4 +29,5 @@ class Public::AddressesController < ApplicationController
   def set_address
     @address = Address.find(params[:id])
   end
+
 end

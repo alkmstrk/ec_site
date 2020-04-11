@@ -19,16 +19,8 @@ class Admin::OrdersController < ApplicationController
 
   def detail_update
     @detail = OrderDetail.find(params[:order_detail_id])
-    @detail.update(detail_params)
-    #orderに紐づくorder_detailのmaking_statusだけを取り出す
-    # @statuses = @detail.order.order_details.map{ |h| h[:making_status] }
-    @statuses = @detail.order.order_details.pluck(:making_status)
-    @statuses.delete("制作完了")
-    if @statuses.length == 0
-      @detail.order.update(order_status: "発送準備中")
-    elsif @statuses.include?("製作中")
-      @detail.order.update(order_status: "製作中")
-    end
+    # order_detail.rbにorder_status_updateメソッドを記述
+    flash[:notice] = "更新に失敗しました" if @detail.order_status_update(detail_params)
     redirect_to admin_order_path(@detail.order)
   end
 

@@ -6,11 +6,12 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def update
-    if @user.update(end_user_params)
-      redirect_to admin_end_user_path(@user)
-    else
-      render :edit
-    end
+    @user.update(end_user_params) ? (redirect_to admin_end_user_path(@user)) : (render :edit)
+    # if @user.update(end_user_params)
+    #   redirect_to admin_end_user_path(@user)
+    # else
+    #   render :edit
+    # end
   end
 
   private

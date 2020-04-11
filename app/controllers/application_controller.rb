@@ -20,6 +20,19 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :telephone_number ])
   end
 
+  def item_search
+    # present?はnilだけでなく空文字" "もfalseで返す
+    #if (params[:search]) != nil || (params[:search]) != ""
+    if (params[:search]).present?
+      @items, @word = Item.search(params[:search]), "#{params[:search]} の検索結果"
+    elsif (params[:genre_id]) 
+      genre = Genre.find(params[:genre_id])
+      @items, @word = genre.items, genre.title
+    else
+      @items, @word = Item.all, "全ての商品"
+    end
+  end
+
   def tax
     @tax = 1.08
   end

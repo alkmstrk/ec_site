@@ -1,13 +1,9 @@
 class Admin::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update]
-  before_action :set_genre_all, only: [:index]
-  
+
   def index
-    if (params[:search]) && (params[:search]) != ""
-      @items, @word = Item.search(params[:search]), (params[:search]) + "の検索結果"
-    else
-      @items, @word = Item.all, "全ての商品"
-    end
+    set_genre_all
+    item_search
   end
 
   def new
@@ -16,19 +12,11 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to admin_item_path(@item)
-    else
-      render :new
-    end
+    @item.save ? (redirect_to admin_item_path(@item)) : (render :new)
   end
 
   def update 
-    if @item.update(item_params)
-      redirect_to admin_item_path(@item)
-    else
-      render :edit
-    end
+    @item.update(item_params) ? (redirect_to admin_item_path(@item)) : (render :edit)
   end
 
   private

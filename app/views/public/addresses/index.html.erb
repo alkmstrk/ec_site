@@ -27,7 +27,7 @@
     </thead>
 
     <tbody>
-        <% @addresses.each do |address| %>
+        <% current_end_user.addresses.each do |address| %>
             <tr>
                 <td><%= address.post_code %></td>
                 <td><%= address.address %></td>
